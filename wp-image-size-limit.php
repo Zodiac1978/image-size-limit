@@ -83,8 +83,7 @@ class WP_Image_Size_Limit {
 		$output = round( $output );
 		$output = $output * 1000; // Convert to kilobytes.
 
-		return $output;
-
+		return (int) $output; // round returns a float (although precision default is 0), therefore casting to integer.
 	}
 
 	/**
@@ -100,7 +99,6 @@ class WP_Image_Size_Limit {
 		} else {
 			return esc_html__( 'MB', 'image-size-limit' );
 		}
-
 	}
 
 	/**
