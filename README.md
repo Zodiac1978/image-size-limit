@@ -2,7 +2,7 @@
 
 Adds a new setting under Settings -> Media where an admin can set a maximum upload file size for image files.
 
-## What does DNS Info do?
+## What does Image Size Limit do?
 
 Many users do not compress or resize their images before uploading them into a post, and oftentimes WordPress's maximum upload limit of 2MB-10MB is still too large to prevent the insertion of photos that can signficantly slow down a website.
 
