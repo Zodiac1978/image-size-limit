@@ -40,7 +40,7 @@ class WP_Image_Size_Limit {
 	/**
 	 * Get image upload limit from settings page
 	 *
-	 * @return [integer] Upload limit in KB
+	 * @return integer Upload limit in KB
 	 */
 	public function get_limit() {
 		$option = get_option( 'wpisl_options' );
@@ -57,7 +57,7 @@ class WP_Image_Size_Limit {
 	/**
 	 * Output image upload limit in KB (or MB if above 1 MB)
 	 *
-	 * @return [integer] Image upload limit from plugin settings in KB (or MB if above 1 MB)
+	 * @return integer Image upload limit from plugin settings in KB (or MB if above 1 MB)
 	 */
 	public function output_limit() {
 		$limit        = $this->get_limit();
@@ -74,7 +74,7 @@ class WP_Image_Size_Limit {
 	/**
 	 * Maximal upload limit read from WordPress (=server settings)
 	 *
-	 * @return [integer] Image upload limit from WordPress in KB (or MB if above 1 MB)
+	 * @return integer Image upload limit from WordPress in KB (or MB if above 1 MB)
 	 */
 	public function wp_limit() {
 		$output = wp_max_upload_size();
@@ -90,7 +90,7 @@ class WP_Image_Size_Limit {
 	/**
 	 * Unit of limit (KB or MB)
 	 *
-	 * @return [string] KB (or MB if above 1 MB)
+	 * @return string KB (or MB if above 1 MB)
 	 */
 	public function limit_unit() {
 		$limit = $this->get_limit();
@@ -106,8 +106,8 @@ class WP_Image_Size_Limit {
 	/**
 	 * Return error message if image upload limit is reached
 	 *
-	 * @param  [array] $file  An array of data for a single file.
-	 * @return [array]        Array for file with added error message if above upload limit.
+	 * @param  array $file  An array of data for a single file.
+	 * @return array        Array for file with added error message if above upload limit.
 	 */
 	public function error_message( $file ) {
 		$size         = $file['size'];
