@@ -16,8 +16,9 @@
 function wpisl_options_init() {
 
 	// If we have no options in the database, let's add them now.
-	if ( false === wpisl_get_options() )
+	if ( false === wpisl_get_options() ) {
 		add_option( 'wpisl_options', wpisl_get_default_options() );
+	}
 
 	register_setting(
 		'media',       // Options group
@@ -25,12 +26,12 @@ function wpisl_options_init() {
 		'wpisl_options_validate' // The sanitization callback, see wpisl_options_validate()
 	);
 
-	add_settings_field( 
-		'img_upload_limit', 
-		'Maximum File Size for Images', 
-		'wpisl_settings_field_img_upload_limit', 
-		'media', 
-		'uploads' 
+	add_settings_field(
+		'img_upload_limit',
+		'Maximum File Size for Images',
+		'wpisl_settings_field_img_upload_limit',
+		'media',
+		'uploads'
 	);
 }
 add_action( 'admin_init', 'wpisl_options_init' );
@@ -42,8 +43,8 @@ add_action( 'admin_init', 'wpisl_options_init' );
  * @since Version 1.0
  */
 function wpisl_get_default_options() {
-	$wpisl = new WP_Image_Size_Limit;
-	$limit = $wpisl->wp_limit();
+	$wpisl           = new WP_Image_Size_Limit();
+	$limit           = $wpisl->wp_limit();
 	$default_options = array(
 		'img_upload_limit' => $limit,
 	);
@@ -65,31 +66,31 @@ function wpisl_get_options() {
  * Renders the Maximum Upload Size setting field.
  *
  * @since Version 1.0
- *
  */
 
 function wpisl_settings_field_img_upload_limit() {
 	$options = wpisl_get_options();
-	$wpisl = new WP_Image_Size_Limit;
-	$limit = $wpisl->wp_limit();
+	$wpisl   = new WP_Image_Size_Limit();
+	$limit   = $wpisl->wp_limit();
 
 		// Sanitize
 		$id = 'img_upload_limit';
 
-		if ( isset($options[$id]) && ($options[$id] < $limit) ) {
-			$value = $options[$id];
-		} 
-		/*elseif  ( empty($options[$id])  )  {
+	if ( isset( $options[ $id ] ) && ( $options[ $id ] < $limit ) ) {
+		$value = $options[ $id ];
+	}
+		/*
+		elseif  ( empty($options[$id])  )  {
 			$value = '1000';
 		} */
-		else {
-			$value = $limit;
-		}
+	else {
+		$value = $limit;
+	}
 
 		$field = '<p>
 			<input name="wpisl_options[' . $id . ']' . '" id="wpisl-limit" type="text" value="' . $value . '" size="4" maxlength="5" /> KB
 			<br>
-			<span class="description">Server maximum: '.$limit.' KB</span>
+			<span class="description">Server maximum: ' . $limit . ' KB</span>
 		</p>';
 
 	echo $field;
@@ -104,10 +105,10 @@ function wpisl_settings_field_img_upload_limit() {
  */
 function wpisl_options_validate( $input ) {
 	$output = $defaults = wpisl_get_default_options();
-	$wpisl = new WP_Image_Size_Limit;
-	$limit = $wpisl->wp_limit();
+	$wpisl  = new WP_Image_Size_Limit();
+	$limit  = $wpisl->wp_limit();
 
-	$output['img_upload_limit'] = str_replace(',','', $input['img_upload_limit']);
+	$output['img_upload_limit'] = str_replace( ',', '', $input['img_upload_limit'] );
 
 	$output['img_upload_limit'] = absint( intval( $output['img_upload_limit'] ) );
 
@@ -119,6 +120,6 @@ function wpisl_options_validate( $input ) {
 }
 
 function unique_identifyer_admin_notices() {
-     settings_errors( 'img_upload_limit' );
+	 settings_errors( 'img_upload_limit' );
 }
 add_action( 'admin_notices', 'unique_identifyer_admin_notices' );

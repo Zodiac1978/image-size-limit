@@ -1,5 +1,5 @@
-=== WP Image Size Limit ===
-Contributors: bootsz
+=== Image Size Limit ===
+Contributors: zodiac1978, bootsz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZTTJ8N6G8KR62
 Tags: images, media, uploads
 Requires at least: 3.3.2
