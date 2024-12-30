@@ -21,9 +21,9 @@ function wpisl_options_init() {
 	}
 
 	register_setting(
-		'media',       // Options group
-		'wpisl_options', // Database option, see wpisl_get_options()
-		'wpisl_options_validate' // The sanitization callback, see wpisl_options_validate()
+		'media',       // Options group.
+		'wpisl_options', // Database option, see wpisl_get_options().
+		'wpisl_options_validate' // The sanitization callback, see wpisl_options_validate().
 	);
 
 	add_settings_field(
@@ -67,13 +67,12 @@ function wpisl_get_options() {
  *
  * @since Version 1.0
  */
-
 function wpisl_settings_field_img_upload_limit() {
 	$options = wpisl_get_options();
 	$wpisl   = new WP_Image_Size_Limit();
 	$limit   = $wpisl->wp_limit();
 
-		// Sanitize
+		// Sanitize.
 		$id = 'img_upload_limit';
 
 	if ( isset( $options[ $id ] ) && ( $options[ $id ] < $limit ) ) {
@@ -104,9 +103,10 @@ function wpisl_settings_field_img_upload_limit() {
  * @since Version 1.0
  */
 function wpisl_options_validate( $input ) {
-	$output = $defaults = wpisl_get_default_options();
-	$wpisl  = new WP_Image_Size_Limit();
-	$limit  = $wpisl->wp_limit();
+	$output   = $defaults;
+	$defaults = wpisl_get_default_options();
+	$wpisl    = new WP_Image_Size_Limit();
+	$limit    = $wpisl->wp_limit();
 
 	$output['img_upload_limit'] = str_replace( ',', '', $input['img_upload_limit'] );
 
@@ -119,7 +119,10 @@ function wpisl_options_validate( $input ) {
 	return apply_filters( 'wpisl_options_validate', $output, $input, $defaults );
 }
 
+/**
+ * Set unique identifier for the upload limit reached error
+ */
 function unique_identifyer_admin_notices() {
-	 settings_errors( 'img_upload_limit' );
+	settings_errors( 'img_upload_limit' );
 }
 add_action( 'admin_notices', 'unique_identifyer_admin_notices' );
