@@ -1,0 +1,40 @@
+{
+    "name": "zodiac1978/image-size-limit",
+    "description": "Adds a new setting under Settings -> Media where an admin can set a maximum upload file size for image files.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=5.6.0",
+        "composer/installers": "~1.0"
+    },
+    "authors": [
+        {
+            "name": "Torsten Landsiedel",
+            "homepage": "https://torstenlandsiedel.de"
+        }
+    ],
+    "support": {
+        "docs": "https://github.com/glueckpress/image-size-limit/blob/master/README.md",
+        "forum": "https://wordpress.org/support/plugin/image-size-limit",
+        "issues": "https://github.com/Zodiac1978/image-size-limit/issues",
+        "source": "https://github.com/Zodiac1978/image-size-limit/"
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-sqlite3": "*",
+        "szepeviktor/phpstan-wordpress": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "scripts": {
+        "analyze": "@php ./vendor/bin/phpstan analyze"
+    }
+}
