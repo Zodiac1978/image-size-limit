@@ -31,7 +31,7 @@ class WP_Image_Size_Limit {
 	public function add_plugin_links( $links ) {
 		return array_merge(
 			array(
-				'settings' => '<a href="' . get_bloginfo( 'wpurl' ) . '/wp-admin/options-media.php?settings-updated=true#wpisl-limit">Settings</a>',
+				'settings' => '<a href="' . get_bloginfo( 'wpurl' ) . '/wp-admin/options-media.php?settings-updated=true#wpisl-limit">' . __( 'Settings', 'image-size-limit' ) . '</a>',
 			),
 			$links
 		);
@@ -96,9 +96,9 @@ class WP_Image_Size_Limit {
 		$limit = $this->get_limit();
 
 		if ( $limit < 1000 ) {
-			return 'KB';
+			return esc_html__( 'KB', 'image-size-limit' );
 		} else {
-			return 'MB';
+			return esc_html__( 'MB', 'image-size-limit' );
 		}
 
 	}
