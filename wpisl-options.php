@@ -20,10 +20,14 @@ function wpisl_options_init() {
 		add_option( 'wpisl_options', wpisl_get_default_options() );
 	}
 
+	$args = array(
+		'sanitize_callback' => 'wpisl_options_validate',
+		'default'           => null,
+	);
 	register_setting(
-		'media',       // Options group.
+		'media',         // Options group.
 		'wpisl_options', // Database option, see wpisl_get_options().
-		'wpisl_options_validate' // The sanitization callback, see wpisl_options_validate().
+		$args            // The sanitization callback, see wpisl_options_validate().
 	);
 
 	add_settings_field(
@@ -102,8 +106,8 @@ function wpisl_settings_field_img_upload_limit() {
  * @since Version 1.0
  */
 function wpisl_options_validate( $input ) {
-	$output   = $defaults;
 	$defaults = wpisl_get_default_options();
+	$output   = $defaults;
 	$wpisl    = new WP_Image_Size_Limit();
 	$limit    = $wpisl->wp_limit();
 

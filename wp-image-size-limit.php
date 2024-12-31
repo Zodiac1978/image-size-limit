@@ -8,8 +8,9 @@ Author URI: https://torstenalndsiedel.de
 Version: 1.0.5
 */
 
-
-define( 'WPISL_DEBUG', false );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 require_once 'wpisl-options.php';
 
