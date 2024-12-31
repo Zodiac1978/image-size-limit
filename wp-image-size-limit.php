@@ -119,7 +119,7 @@ class WP_Image_Size_Limit {
 
 		if ( ( $size > $limit ) && ( false !== $is_image ) ) {
 			$file['error'] = 'Image files must be smaller than ' . $limit_output . $unit;
-			if ( WPISL_DEBUG ) {
+			if ( defined( 'WPISL_DEBUG' ) && WPISL_DEBUG === true ) {
 				$file['error'] .= ' [ filesize = ' . $size . ', limit =' . $limit . ' ]';
 			}
 		}
