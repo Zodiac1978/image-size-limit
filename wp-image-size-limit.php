@@ -118,7 +118,7 @@ class WP_Image_Size_Limit {
 		$unit         = $this->limit_unit();
 
 		if ( ( $size > $limit ) && ( false !== $is_image ) ) {
-			$file['error'] = 'Image files must be smaller than ' . $limit_output . $unit;
+			$file['error'] = __( 'Image files must be smaller than ', 'image-size-limit') . $limit_output . $unit;
 			if ( defined( 'WPISL_DEBUG' ) && WPISL_DEBUG === true ) {
 				$file['error'] .= ' [ filesize = ' . $size . ', limit =' . $limit . ' ]';
 			}
@@ -144,7 +144,7 @@ class WP_Image_Size_Limit {
 		}
 		<?php if ( $limit < $wplimit ) : ?>
 		.upload-flash-bypass:after {
-			content: 'Maximum image size: <?php echo absint( $limit_output ) . $unit; ?>.';
+			content: '<?php esc_html_e( 'Maximum image size:', 'image-size-limit' );?> <?php echo absint( $limit_output ) . $unit; ?>.';
 			display: block;
 			margin: 15px 0;
 		}
