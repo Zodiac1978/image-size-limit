@@ -39,6 +39,7 @@ Please open up an issue on [GitHub](https://github.com/Zodiac1978/image-size-lim
 
 = 1.0.5 =
 * Fixed coding standards
+* Make plugin translatable
 
 = 1.0.4 =
 * Latest version from Sean Butze
