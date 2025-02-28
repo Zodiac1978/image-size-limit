@@ -80,7 +80,7 @@ class WP_Image_Size_Limit {
 	public function wp_limit() {
 		$output = wp_max_upload_size();
 		$output = round( $output );
-		$output = $output / 1000000; // Convert to megabytes.
+		$output = $output / 1048576; // Convert to megabytes.
 		$output = round( $output );
 		$output = $output * 1000; // Convert to kilobytes.
 
