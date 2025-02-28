@@ -93,7 +93,7 @@ function wpisl_settings_field_img_upload_limit() {
 		$field = '<p>
 			<input class="small-text" name="wpisl_options[' . $id . ']" id="wpisl-limit" type="number" step="1" min="0" value="' . $value . '" /> ' . esc_html__( 'KB', 'image-size-limit' ) . '
 			<br>
-			<span class="description">' . __( 'Server maximum:', 'image-size-limit' ) . ' ' . $limit . ' ' . esc_html__( 'KB', 'image-size-limit' ) . '</span>
+			<span class="description">' . __( 'Server maximum:', 'image-size-limit' ) . ' ' . number_format_i18n( $limit ) . ' ' . esc_html__( 'KB', 'image-size-limit' ) . '</span>
 		</p>';
 
 	echo $field;
