@@ -4,7 +4,7 @@ Plugin Name: Image Size Limit
 Plugin URI: http://wordpress.org/plugins/image-size-limit
 Description: Allows setting a maximum file size for image uploads.
 Author: Torsten Landsiedel, Sean Butze
-Author URI: https://torstenalndsiedel.de
+Author URI: https://torstenlandsiedel.de
 Version: 1.0.5
 */
 
