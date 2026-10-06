@@ -1,11 +1,17 @@
 {
     "name": "zodiac1978/image-size-limit",
-    "description": "Adds a new setting under Settings -> Media where an admin can set a maximum upload file size for image files.",
+    "description": "Adds an image-specific upload size limit to WordPress.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": ">=5.6.0",
-        "composer/installers": "~1.0"
+        "php": ">=7.4",
+        "composer/installers": "^2.0"
+    },
+    "require-dev": {
+        "php-stubs/wordpress-stubs": "6.9.4",
+        "phpunit/phpunit": "^9.6",
+        "szepeviktor/phpstan-wordpress": "^2.0.4",
+        "wp-coding-standards/wpcs": "^3.2"
     },
     "authors": [
         {
@@ -14,27 +20,29 @@
         }
     ],
     "support": {
-        "docs": "https://github.com/glueckpress/image-size-limit/blob/master/README.md",
-        "forum": "https://wordpress.org/support/plugin/image-size-limit",
+        "docs": "https://github.com/Zodiac1978/image-size-limit/blob/main/README.md",
+        "forum": "https://wordpress.org/support/plugin/image-size-limit/",
         "issues": "https://github.com/Zodiac1978/image-size-limit/issues",
         "source": "https://github.com/Zodiac1978/image-size-limit/"
     },
-    "require": {
-        "php": ">=5.6"
-    },
-    "require-dev": {
-        "ext-curl": "*",
-        "ext-dom": "*",
-        "ext-json": "*",
-        "ext-sqlite3": "*",
-        "szepeviktor/phpstan-wordpress": "^1.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src"
-        }
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "7.4.0"
+        },
+        "sort-packages": true
     },
     "scripts": {
-        "analyze": "@php ./vendor/bin/phpstan analyze"
+        "analyze": "phpstan analyze --debug --no-progress --memory-limit=512M",
+        "coding-standards": "phpcs --standard=phpcs.xml.dist",
+        "test": "phpunit",
+        "check": [
+            "@coding-standards",
+            "@analyze",
+            "@test"
+        ]
     }
 }

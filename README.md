@@ -1,26 +1,47 @@
 # Image Size Limit
 
-Adds a new setting under Settings -> Media where an admin can set a maximum upload file size for image files.
+Image Size Limit adds an image-specific upload limit under **Settings → Media**. It is a maintained continuation of the discontinued [WP Image Size Limit plugin](https://wordpress.org/plugins/wp-image-size-limit/).
 
-## What does Image Size Limit do?
+The setting lets administrators prevent unnecessarily large images while preserving WordPress's server limit for other file types such as audio, video, and documents.
 
-Many users do not compress or resize their images before uploading them into a post, and oftentimes WordPress's maximum upload limit of 2MB-10MB is still too large to prevent the insertion of photos that can signficantly slow down a website.
+## Requirements
 
-Image Size Limit allows an administrator to set a custom file size limit that is specific to image files and smaller than WordPress's general file size limit.
-
-This is especially useful when you need to put tighter restriction on image uploads but want to preserve the ability to upload larger files of other formats (audio, video, etc.).
+- WordPress 5.8 or newer
+- PHP 7.4 or newer
 
 ## Installation
 
-At the moment you need to download the ZIP file here from GitHub or use something like [Git Installer](https://www.git-installer.com/) or [Git Updater](https://git-updater.com/)
+Install the plugin from the WordPress plugin directory, or upload a release ZIP on the Plugins screen. After activation, open **Settings → Media** and enter the maximum image size in KB.
+
+Existing values stored by earlier releases remain compatible.
+
+## Development
+
+Install the development dependencies and run all checks:
+
+```bash
+composer install
+composer check
+```
+
+The check command runs WordPress Coding Standards, PHPStan, and PHPUnit.
 
 ## Changelog
 
+### 1.1.0
+
+- Prevent duplicate hook registration.
+- Detect images with WordPress file type checks instead of trusting the browser MIME type.
+- Preserve exact server limits and consistently format file sizes.
+- Replace global uploader CSS with a scoped media-screen notice.
+- Improve validation, escaping, translations, and plugin metadata.
+- Add automated tests, coding standards, static analysis, and a PHP version CI matrix.
+
 ### 1.0.5
 
-* Fixed coding standards
-* Make plugin translatable
+- Fixed coding standards.
+- Made the plugin translatable.
 
 ### 1.0.4
 
-* Latest release from Sean Butze
+- Latest release from Sean Butze.

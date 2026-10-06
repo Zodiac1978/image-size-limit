@@ -6,3 +6,4 @@ parameters:
   paths:
     - wp-image-size-limit.php
     - wpisl-options.php
+    - includes
